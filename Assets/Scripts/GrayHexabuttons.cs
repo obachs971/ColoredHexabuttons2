@@ -191,7 +191,7 @@ public class GrayHexabuttons {
 			numButtonPresses++;
 			if (numButtonPresses == 6)
 			{
-				Debug.LogFormat("[Colored Hexabuttons #{0}] User Submission: {1}{2}{3}{4}{5}{6}", moduleId, submission[0], submission[1], submission[2], submission[3], submission[4], submission[5]);
+				Debug.LogFormat("[Colored Hexabuttons 2 #{0}] User Submission: {1}{2}{3}{4}{5}{6}", moduleId, submission[0], submission[1], submission[2], submission[3], submission[4], submission[5]);
 				bool correct = true;
 				for(int aa = 0; aa < 6; aa++)
 				{

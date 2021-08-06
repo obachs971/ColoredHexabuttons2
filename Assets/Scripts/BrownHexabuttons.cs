@@ -19,9 +19,18 @@ public class BrownHexabuttons {
 	private int numButtonPresses;
 	private string[] chemicals;
 	private string[] potions;
-	private string currentPotion;
+	private string[] submission;
 	private string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
 	private int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
+	private string[] potionTable =
+		{
+			"R-", "B-", "M-", "K-",
+			"R0", "B0", "M0", "K0",
+			"R+", "B+", "M+", "K+",
+			"G-", "C-", "Y-", "W-",
+			"G0", "C0", "Y0", "W0",
+			"G+", "C+", "Y+", "W+"
+		};
 	public BrownHexabuttons(ColorfulButtonSeries m, KMAudio aud, int MI, KMSelectable[] HB, MeshRenderer[] BM, TextMesh[] BT, Material[] LC, MeshRenderer[] LM, Transform T)
 	{
 		coloredHexabuttons = m;
@@ -37,14 +46,16 @@ public class BrownHexabuttons {
 	public void run()
 	{
 		Debug.LogFormat("[Colored Hexabuttons 2 #{0}] Color Generated: Brown", moduleId);
-		potions = new string[2];
-		potions[0] = "RGBCMYWK"[UnityEngine.Random.Range(0, 8)] + "" + "-0+"[UnityEngine.Random.Range(0, 3)];
-		potions[1] = potions[0].ToUpperInvariant();
-		currentPotion = potions[0].ToUpperInvariant();
+		potions = new string[6];
+		submission = new string[7];
+		string alpha = "ABCDEFGHIJKLMNOPQRSTUVWX";
+		buttonText[6].text = alpha[UnityEngine.Random.Range(0, 24)] + "";
+		submission[0] = potionTable[alpha.IndexOf(buttonText[6].text)].ToUpperInvariant();
+		string curr = submission[0].ToUpperInvariant();
 		string[] sizes = { "BBB", "BBS", "BSB", "BSS", "SBB", "SBS", "SSB", "SSS" };
 		string[] charges = { "---", "--+", "-+-", "-++", "+--", "+-+", "++-", "+++" };
 		chemicals = new string[6];
-		
+		int[] possSolution = new int[6];
 		string possSize = "01234567", possCharge = "01234567", possIndex = "012345";
 		for(int aa = 0; aa < 6; aa++)
 		{
@@ -55,7 +66,9 @@ public class BrownHexabuttons {
 			possSize = possSize.Replace(SI + "", "");
 			possCharge = possCharge.Replace(CI + "", "");
 			chemicals[I] = sizes[SI][0] + "" + charges[CI][0] + "" + sizes[SI][1] + "" + charges[CI][1] + "" + sizes[SI][2] + "" + charges[CI][2];
-			potions[1] = getResult(potions[1], chemicals[I]);
+			curr = getResult(curr, chemicals[I]);
+			potions[aa] = curr.ToUpperInvariant();
+			possSolution[aa] = I;
 		}
 		string[][] chemicalTable =
 		{
@@ -68,31 +81,23 @@ public class BrownHexabuttons {
 			new string[]{ "B-S-B+", "S-B-B-", "B+B+B+", "S-S+S+", "S+S-B+", "S+B+S-", "B+S-S-", "B-B+S-" },
 			new string[]{ "B+B+B-", "S+S-S-", "S-S+B-", "S-B-S+", "B-S-S-", "B+B+S+", "B-S+B+", "S+B-B+" }
 		};
-		string[] potionTable =
+		voiceMessage = new string[6];
+		possIndex = "012345";
+		for (int aa = 0; aa < 6; aa++)
 		{
-			"R-", "B-", "M-", "K-",
-			"R0", "B0", "M0", "K0",
-			"R+", "B+", "M+", "K+",
-			"G-", "C-", "Y-", "W-",
-			"G0", "C0", "Y0", "W0",
-			"G+", "C+", "Y+", "W+"
-		};
-		voiceMessage = new string[2];
-		string alpha = "ABCDEFGHIJKLMNOPQRSTUVWX";
-		for (int aa = 0; aa < 2; aa++)
-		{
-			for(int bb = 0; bb < potionTable.Length; bb++)
+			int I = possIndex[UnityEngine.Random.Range(0, possIndex.Length)] - '0';
+			possIndex = possIndex.Replace(I + "", "");
+			for (int bb = 0; bb < potionTable.Length; bb++)
 			{
-				if(potionTable[bb].Equals(potions[aa]))
+				if(potionTable[bb].Equals(potions[I]))
 				{
-					voiceMessage[aa] = alpha[bb] + "";
+					voiceMessage[I] = alpha[bb] + "";
 					break;
 				}
 			}
 		}
-		Debug.LogFormat("[Colored Hexabuttons 2 #{0}] Voice Message: {1}{2}", moduleId, voiceMessage[0], voiceMessage[1]);
-		Debug.LogFormat("[Colored Hexabuttons 2 #{0}] Starting Potion: {1}", moduleId, potions[0]);
-		Debug.LogFormat("[Colored Hexabuttons 2 #{0}] Goal Potion: {1}", moduleId, potions[1]);
+		Debug.LogFormat("[Colored Hexabuttons 2 #{0}] Center Text: {1}", moduleId, buttonText[6].text);
+		Debug.LogFormat("[Colored Hexabuttons 2 #{0}] Voice Message: {1}{2}{3}{4}{5}{6}", moduleId, voiceMessage[0], voiceMessage[1], voiceMessage[2], voiceMessage[3], voiceMessage[4], voiceMessage[5]);
 		foreach (int i in buttonIndex)
 		{
 			buttonText[i].text = "";
@@ -113,6 +118,7 @@ public class BrownHexabuttons {
 			Debug.LogFormat("[Colored Hexabuttons 2 #{0}] {1} Text: {2}", moduleId, positions[i], buttonText[i].text);
 			Debug.LogFormat("[Colored Hexabuttons 2 #{0}] {1} Chemical: {2}", moduleId, positions[i], chemicals[i]);
 		}
+		Debug.LogFormat("[Colored Hexabuttons 2 #{0}] Possible Solution: {1} {2} {3} {4} {5} {6}", moduleId, positions[possSolution[0]], positions[possSolution[1]], positions[possSolution[2]], positions[possSolution[3]], positions[possSolution[4]], positions[possSolution[5]]);
 		hexButtons[6].OnInteract = delegate { pressedBrownCenter(); return false; };
 		numButtonPresses = 0;
 	}
@@ -127,12 +133,24 @@ public class BrownHexabuttons {
 			buttonMesh[n].transform.localPosition = new Vector3(pos.x, pos.y, pos.z);
 			ledMesh[n].material = ledColors[1];
 			hexButtons[n].OnInteract = null;
-			currentPotion = getResult(currentPotion, chemicals[n]);
 			numButtonPresses++;
-			Debug.LogFormat("[Colored Hexabuttons 2 #{0}] Potion is now {1}", moduleId, currentPotion);
+			submission[numButtonPresses] = getResult(submission[numButtonPresses - 1], chemicals[n]);
+			Debug.LogFormat("[Colored Hexabuttons 2 #{0}] Potion is now {1}", moduleId, submission[numButtonPresses]);
 			if (numButtonPresses == 6)
 			{
-				if(currentPotion.Equals(potions[1]))
+				bool[] flag = { false, false, false, false, false, false };
+				for(int aa = 0; aa < 6; aa++)
+				{
+					for(int bb = 1; bb < 7; bb++)
+					{
+						if(potions[aa].Equals(submission[bb]) && !(flag[aa]))
+						{
+							flag[aa] = true;
+							break;
+						}
+					}
+				}
+				if(flag[0] && flag[1] && flag[2] && flag[3] && flag[4] && flag[5])
 				{
 					moduleSolved = true;
 					coloredHexabuttons.Solve();
@@ -238,9 +256,8 @@ public class BrownHexabuttons {
 	}
 	void resetInput()
 	{
-		Debug.LogFormat("[Colored Hexabuttons 2 #{0}] Resetting Potion", moduleId, currentPotion);
+		Debug.LogFormat("[Colored Hexabuttons 2 #{0}] Resetting Potion", moduleId);
 		numButtonPresses = 0;
-		currentPotion = potions[0].ToUpperInvariant();
 		foreach (int i in buttonIndex)
 		{
 			Vector3 pos = buttonMesh[i].transform.localPosition;
