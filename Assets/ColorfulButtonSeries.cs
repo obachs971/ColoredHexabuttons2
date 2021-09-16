@@ -94,22 +94,22 @@ public class ColorfulButtonSeries : MonoBehaviour
 				red.run();
 				break;
 			case 1:
-				TPScore = 10;
+				TPScore = 9;
 				OrangeHexabuttons orange = new OrangeHexabuttons(this, Audio, moduleId, hexButtons, buttonMesh, buttonText, ledColors, ledMesh, transform);
 				orange.run();
 				break;
 			case 2:
-				TPScore = 12;
+				TPScore = 10;
 				YellowHexabuttons yellow = new YellowHexabuttons(this, Audio, moduleId, hexButtons, buttonMesh, buttonMF, highlightMF, highlightTF, ledMesh, transform, shapes);
 				yellow.run();
 				break;
 			case 3:
-				TPScore = 12;
+				TPScore = 13;
 				GreenHexabuttons green = new GreenHexabuttons(this, Audio, notes, moduleId, hexButtons, buttonMesh, buttonText, ledColors, ledMesh, flashLights, transform);
 				green.run();
 				break;
 			case 4:
-				TPScore = 28;
+				TPScore = 24;
 				BlueHexabuttons blue = new BlueHexabuttons(this, Audio, moduleId, hexButtons, buttonMesh, buttonText, ledColors, ledMesh, transform);
 				blue.run();
 				break;
@@ -119,22 +119,22 @@ public class ColorfulButtonSeries : MonoBehaviour
 				purple.run();
 				break;
 			case 6:
-				TPScore = 12;
+				TPScore = 10;
 				WhiteHexabuttons white = new WhiteHexabuttons(this, Audio, moduleId, hexButtons, buttonMesh, buttonColors, ledMesh, transform);
 				white.run();
 				break;
 			case 7:
-				TPScore = 12;
+				TPScore = 10;
 				GrayHexabuttons gray = new GrayHexabuttons(this, Audio, moduleId, hexButtons, buttonMesh, buttonText, ledColors, ledMesh, flashLights, transform);
 				gray.run();
 				break;
 			case 8:
-				TPScore = 10;
+				TPScore = 11;
 				BlackHexabuttons black = new BlackHexabuttons(this, Audio, pitches, moduleId, hexButtons, buttonMesh, buttonText, ledColors, ledMesh, brightness, flashLights, transform, buttonColors[8]);
 				black.run();
 				break;
 			case 9:
-				TPScore = 18;
+				TPScore = 17;
 				BrownHexabuttons brown = new BrownHexabuttons(this, Audio, moduleId, hexButtons, buttonMesh, buttonText, ledColors, ledMesh, transform);
 				brown.run();
 				break;
