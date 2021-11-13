@@ -85,7 +85,7 @@ public class ColorfulButtonSeries : MonoBehaviour
 			colorChoices = FindColors(modConfig);
 			colorIndex = colorChoices[UnityEngine.Random.Range(0, colorChoices.Length)] - '0';
 		}
-		//colorIndex = 8;
+		//colorIndex = 9;
 		switch (colorIndex)
 		{
 			case 0:

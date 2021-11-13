@@ -91,7 +91,7 @@ public class BrownHexabuttons {
 			{
 				if(potionTable[bb].Equals(potions[I]))
 				{
-					voiceMessage[I] = alpha[bb] + "";
+					voiceMessage[aa] = alpha[bb] + "";
 					break;
 				}
 			}
