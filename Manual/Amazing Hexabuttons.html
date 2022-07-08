@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <title>Amazing Hexabuttons — Keep Talking and Nobody Explodes Module</title>
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/ktane-utils.js"></script>
+    <script src="js/jquery.3.1.1.min.js"></script>
+    <script>
+    $(function() {
+        let maze = $(".highlight-overlay");
+        for (let r = 0; r < 6; r++) {
+            let row = $("<tr>").appendTo(maze);
+            for (let c = 0; c < 6; c++) {
+                $("<td>").appendTo(row);
+            }
+        }
+    });
+    </script>
+    <style>
+        *[col-s] {
+            color: #ffffff
+        }
+        .dark table, table {
+            margin: 1em auto;
+            border: none;
+        }
+        td { text-align: center; }
+
+        .strip-change-one td,
+        .strip-change-one th {
+            padding: .3em .5em .2em;
+        }
+        .alpha {
+            font-size: 14px;
+        }
+        .blue-image {
+            width: 1cm;
+        }
+        .imageholder {
+            width: 7cm;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .yellow-symbol {
+            width: 7cm;
+        }
+        table.braille-table, table.braille-words {
+            margin: 1em auto;
+        }
+        table.braille-table th, table.braille-table td {
+            text-align: center;
+        }
+        table.braille-words th, table.braille-words td {
+            text-align: left;
+        }
+        svg.braille-pattern { width: 1cm; }
+        .dark svg.braille-pattern { filter: invert(87%); }
+        table.semaphore-table {
+            width: 100%;
+        }
+        table.nested > tr > td {
+            border: none;
+        }
+
+            table.semaphore-table td {
+                width: 20%;
+                text-align: center;
+                font-weight: bold;
+            }
+
+        img.semaphore-img {
+            width: 5em;
+        }
+
+        img.semaphore-img-small {
+            width: 2em;
+        }
+
+        svg.swap { width: 2.5cm; }
+        .dark svg.swap path { stroke: #DDD; }
+        .dark #arrow-end, .dark #arrow-start { fill: #DDD; }
+
+        .dark table.ondark-img img { filter: invert(87%); }
+        .page {
+            background-repeat: repeat-y;
+            background-position: top;
+        }
+        table.deduction th:nth-child(7) { border-right-width: 3px; }
+        table.deduction tr:nth-child(7) th { border-bottom-width: 3px; }
+        .dark .highlight-overlay, .highlight-overlay {
+            margin: 0;
+            border: none;
+            position: absolute;
+            height: 7cm;
+            width: 7cm;
+        }
+        .dark .highlight-overlay td, .highlight-overlay td { border: none; }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <div class="page page-bg-01">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Amazing Hexabuttons</span>
+            </div>
+            <div class="page-content">
+            <img src="img/Component/Colored Hexabuttons 2.svg" class="diagram">
+            <h2>On the Subject of Amazing Hexabuttons</h2>
+            <p class="flavour-text">These buttons are sure A-maze-ing.</p>
+            <p>Each of the non-center buttons will either switch to either of the 2 mazes you are in or move you in a direction. To figure out which button does what, use the priority list that corresponds to the center button's shape.</p>
+            <p>The 1st shape in the list that is also present on the module will switch to the 1st shape's maze. The 2nd shape will switch to the 2nd shape's maze. The 3rd shape will move you up. The 4th shape is right. The 5th shape is down. The remaining button will move you left.</p>
+            <h4 style="text-align:center">Priority List</h4>
+            <table class="ondark-img">
+            <tr><th><img src="img/Colored Hexabuttons/YellowCircle.png"/></th><th><img src="img/Colored Hexabuttons/YellowOctagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCross.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHexagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowPentagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowSquare.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHeart.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowStar.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCrescent.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowTriangle.png"/></th></tr>
+            <tr><th><img src="img/Colored Hexabuttons/YellowTriangle.png"/></th><th><img src="img/Colored Hexabuttons/YellowHexagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHeart.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCross.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowSquare.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowPentagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowOctagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCrescent.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCircle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowStar.png"/></th></tr>
+            <tr><th><img src="img/Colored Hexabuttons/YellowSquare.png"/></th><th><img src="img/Colored Hexabuttons/YellowTriangle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCrescent.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHeart.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCross.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCircle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowStar.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHexagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowOctagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowPentagon.png"/></th></tr>
+            <tr><th><img src="img/Colored Hexabuttons/YellowPentagon.png"/></th><th><img src="img/Colored Hexabuttons/YellowCircle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHexagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowStar.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowTriangle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowOctagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCrescent.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHeart.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCross.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowSquare.png"/></th></tr>
+            <tr><th><img src="img/Colored Hexabuttons/YellowHexagon.png"/></th><th><img src="img/Colored Hexabuttons/YellowCross.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowPentagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCircle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCrescent.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHeart.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowSquare.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowTriangle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowStar.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowOctagon.png"/></th></tr>
+            <tr><th><img src="img/Colored Hexabuttons/YellowOctagon.png"/></th><th><img src="img/Colored Hexabuttons/YellowStar.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCircle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowPentagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHeart.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCrescent.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHexagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowSquare.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowTriangle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCross.png"/></th></tr>
+            <tr><th><img src="img/Colored Hexabuttons/YellowHeart.png"/></th><th><img src="img/Colored Hexabuttons/YellowSquare.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowOctagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCrescent.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCircle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowStar.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowTriangle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCross.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowPentagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHexagon.png"/></th></tr>
+            <tr><th><img src="img/Colored Hexabuttons/YellowStar.png"/></th><th><img src="img/Colored Hexabuttons/YellowCrescent.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowTriangle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowSquare.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowOctagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHexagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCross.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowPentagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHeart.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCircle.png"/></th></tr>
+            <tr><th><img src="img/Colored Hexabuttons/YellowCrescent.png"/></th><th><img src="img/Colored Hexabuttons/YellowPentagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowStar.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowTriangle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHexagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCross.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCircle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowOctagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowSquare.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHeart.png"/></th></tr>
+            <tr><th><img src="img/Colored Hexabuttons/YellowCross.png"/></th><th><img src="img/Colored Hexabuttons/YellowHeart.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowSquare.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowOctagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowStar.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowTriangle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowPentagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCircle.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowHexagon.png"/>&nbsp;<img src="img/Colored Hexabuttons/YellowCrescent.png"/></th></tr>
+            </table>
+            </div>
+            <div class="page-footer relative-footer">Page 1 of 3</div>
+        </div>
+        <div class="page page-bg-02">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Amazing Hexabuttons</span>
+            </div>
+            <div class="page-content">
+            <p>Pressing the center button will start playing a text-to-speech message that will output 2 characters. If you are unable to hear, press the Status Light to enable/disable Deaf Mode. The first character represents the current location you're at in the mazes. The 2nd character represents the location of the goal space. The active maze by default will be the maze corresponding to the 1st shape in priority order that is present on the module.</p>
+            <p>Press the buttons in such a way that you'll land on the goal space without crossing any walls to disarm the module. Any attempt to cross any wall will result in a strike, resetting the module. Pressing the center button will also reset the module.</p>
+            <table class="ondark-img">
+                <tr>
+                    <th><img src="img/Colored Hexabuttons/YellowCircle.png"/></th><th class="nohighlight">
+                        <div class="imageholder">
+                            <img src="img/Colored Hexabuttons 2/YellowMaze1.svg" class="yellow-symbol"/>
+                            <table class="highlight-overlay"></table>
+                        </div>
+                    </th><th><img src="img/Colored Hexabuttons/YellowTriangle.png"/></th><th class="nohighlight">
+                        <div class="imageholder">
+                            <img src="img/Colored Hexabuttons 2/YellowMaze2.svg" class="yellow-symbol"/>
+                            <table class="highlight-overlay"></table>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th><img src="img/Colored Hexabuttons/YellowSquare.png"/></th><th class="nohighlight">
+                        <div class="imageholder">
+                            <img src="img/Colored Hexabuttons 2/YellowMaze3.svg" class="yellow-symbol"/>
+                            <table class="highlight-overlay"></table>
+                        </div>
+                    </th><th><img src="img/Colored Hexabuttons/YellowPentagon.png"/></th><th class="nohighlight">
+                        <div class="imageholder">
+                            <img src="img/Colored Hexabuttons 2/YellowMaze4.svg" class="yellow-symbol"/>
+                            <table class="highlight-overlay"></table>
+                        </div>
+                    </th>
+                </tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 2 of 3</div>
+        </div>
+        <div class="page page-bg-03">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Amazing Hexabuttons</span>
+            </div>
+            <div class="page-content">
+            <table class="ondark-img">
+                <tr>
+                    <th><img src="img/Colored Hexabuttons/YellowHexagon.png"/></th><th class="nohighlight">
+                        <div class="imageholder">
+                            <img src="img/Colored Hexabuttons 2/YellowMaze5.svg" class="yellow-symbol"/>
+                            <table class="highlight-overlay"></table>
+                        </div>
+                    </th><th><img src="img/Colored Hexabuttons/YellowOctagon.png"/></th><th class="nohighlight">
+                        <div class="imageholder">
+                            <img src="img/Colored Hexabuttons 2/YellowMaze6.svg" class="yellow-symbol"/>
+                            <table class="highlight-overlay"></table>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th><img src="img/Colored Hexabuttons/YellowHeart.png"/></th><th class="nohighlight">
+                        <div class="imageholder">
+                            <img src="img/Colored Hexabuttons 2/YellowMaze7.svg" class="yellow-symbol"/>
+                            <table class="highlight-overlay"></table>
+                        </div>
+                    </th><th><img src="img/Colored Hexabuttons/YellowStar.png"/></th><th class="nohighlight">
+                        <div class="imageholder">
+                            <img src="img/Colored Hexabuttons 2/YellowMaze8.svg" class="yellow-symbol"/>
+                            <table class="highlight-overlay"></table>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th><img src="img/Colored Hexabuttons/YellowCrescent.png"/></th><th class="nohighlight">
+                        <div class="imageholder">
+                            <img src="img/Colored Hexabuttons 2/YellowMaze9.svg" class="yellow-symbol"/>
+                            <table class="highlight-overlay"></table>
+                        </div>
+                    </th><th><img src="img/Colored Hexabuttons/YellowCross.png"/></th><th class="nohighlight">
+                        <div class="imageholder">
+                            <img src="img/Colored Hexabuttons 2/YellowMaze10.svg" class="yellow-symbol"/>
+                            <table class="highlight-overlay"></table>
+                        </div>
+                    </th>
+                </tr>
+                
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 3 of 3</div>
+        </div>
+    </div>
+</body>
+</html>
