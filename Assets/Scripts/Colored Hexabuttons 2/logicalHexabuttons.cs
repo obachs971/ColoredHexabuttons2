@@ -594,6 +594,11 @@ public class logicalHexabuttons : MonoBehaviour
 					{
 						hexButtons[cursor].OnInteract();
 						yield return new WaitForSeconds(0.2f);
+						if (hexButtons[cursor].OnInteractEnded != null)
+						{
+							hexButtons[cursor].OnInteractEnded();
+							yield return new WaitForSeconds(0.2f);
+						}
 					}
 				}
 			}
