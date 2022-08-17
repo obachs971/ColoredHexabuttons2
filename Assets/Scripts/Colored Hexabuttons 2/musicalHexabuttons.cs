@@ -21,12 +21,13 @@ public class musicalHexabuttons : MonoBehaviour
 	private int[] solution;
 	private int[] submission;
 	private int numButtonPresses;
-	private int[] greenNotes;
+	private int[] greenChoiceNotes;
 	private bool moduleSolved;
 	private bool flag;
 	private string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
 	private int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
 	private string[] noteNames = { "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭", "A", "A♯/B♭", "B" };
+	
 	private string[] table1 =
 	{
 		"13","03","12","45","01","31",
@@ -64,13 +65,14 @@ public class musicalHexabuttons : MonoBehaviour
 			noteOrder[aa] = noteChoices[UnityEngine.Random.Range(0, noteChoices.Count)];
 		}
 		string buttonOrder = new string("012345".ToCharArray().Shuffle());
-		greenNotes = new int[6];
+		int[] greenNotes = new int[6];
+		greenChoiceNotes = new int[6];
 		buttonText[6].text = "";
 		var alpha = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		for (int i = 0; i < 6; i+=2)
 		{
-			greenNotes[buttonOrder[i] - '0'] = noteOrder[i] + (12 * UnityEngine.Random.Range(0, 2));
-			greenNotes[buttonOrder[i + 1] - '0'] = noteOrder[i + 1] + (12 * UnityEngine.Random.Range(0, 2));
+			greenNotes[buttonOrder[i] - '0'] = noteOrder[i];
+			greenNotes[buttonOrder[i + 1] - '0'] = noteOrder[i + 1];
 			string temp = buttonOrder[i] + "" + buttonOrder[i + 1];
 			for (int aa = 0; aa < table1.Length; aa++)
 			{
@@ -82,7 +84,7 @@ public class musicalHexabuttons : MonoBehaviour
 			}
 		}
 		var num = UnityEngine.Random.Range(0, 6);
-		var noteName = noteNames[greenNotes[num] % 12];
+		var noteName = noteNames[greenNotes[num]];
 		if (noteName.Length == 1)
 			buttonText[num].text = noteName;
 		else
@@ -92,6 +94,26 @@ public class musicalHexabuttons : MonoBehaviour
 		}
 		foreach (int i in buttonIndex)
 		{
+			if(greenNotes[i] == greenNotes[num])
+			{
+				greenChoiceNotes[i] = ((greenNotes[i] + 6) % 12) + 11;
+			}
+			else if(UnityEngine.Random.Range(0, 2) == 0)
+			{
+				greenChoiceNotes[i] = greenNotes[i] - greenNotes[num];
+				if(greenChoiceNotes[i] < 0)
+					greenChoiceNotes[i] = ((greenNotes[num] + 6) % 12) + 11 + greenChoiceNotes[i];
+				else
+					greenChoiceNotes[i] = ((greenNotes[num] + 6) % 12) + 11 - (12 - greenChoiceNotes[i]);
+			}
+			else
+			{
+				greenChoiceNotes[i] = greenNotes[i] - greenNotes[num];
+				if (greenChoiceNotes[i] > 0)
+					greenChoiceNotes[i] = ((greenNotes[num] + 6) % 12) + 11 + greenChoiceNotes[i];
+				else
+					greenChoiceNotes[i] = ((greenNotes[num] + 6) % 12) + 11 + (12 + greenChoiceNotes[i]);
+			}
 			hexButtons[i].OnInteract = delegate { pressedButton(i); return false; };
 			hexButtons[i].OnInteractEnded = delegate { releasedButton(i); };
 			Debug.LogFormat("[Musical Hexabuttons #{0}] {1} button is playing {2}", moduleId, positions[i], noteNames[greenNotes[i] % 12]);
@@ -114,7 +136,7 @@ public class musicalHexabuttons : MonoBehaviour
 	{
 		if (!(moduleSolved))
 		{
-			Audio.PlaySoundAtTransform(notes[greenNotes[n]].name, transform);
+			Audio.PlaySoundAtTransform(notes[greenChoiceNotes[n]].name, transform);
 			Vector3 pos = buttonMesh[n].transform.localPosition;
 			pos.y = 0.0126f;
 			buttonMesh[n].transform.localPosition = new Vector3(pos.x, pos.y, pos.z);
@@ -134,7 +156,7 @@ public class musicalHexabuttons : MonoBehaviour
 	{
 		if (!(moduleSolved))
 		{
-			Audio.PlaySoundAtTransform(notes[greenNotes[n]].name, transform);
+			Audio.PlaySoundAtTransform(notes[greenChoiceNotes[n]].name, transform);
 			Vector3 pos = buttonMesh[n].transform.localPosition;
 			pos.y = 0.0126f;
 			buttonMesh[n].transform.localPosition = new Vector3(pos.x, pos.y, pos.z);
