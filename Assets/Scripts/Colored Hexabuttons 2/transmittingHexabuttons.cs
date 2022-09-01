@@ -342,7 +342,7 @@ public class transmittingHexabuttons : MonoBehaviour
 							case "NE SE":
 								submission = submission + "X";
 								break;
-							case "NW W":
+							case "NW E":
 								submission = submission + "Y";
 								break;
 							case "SE E":
