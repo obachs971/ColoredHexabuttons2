@@ -200,6 +200,7 @@ public class amazingHexabuttons : MonoBehaviour
 	{
 		moduleId = moduleIdCounter++;
 		yellowShapes = new string("0123456789".ToCharArray().Shuffle()).Substring(0, 7);
+		//yellowShapes = "4218735";
 		for (int i = 0; i < 7; i++)
 		{
 			buttonMF[i].mesh = shapes[yellowShapes[i] - '0'].sharedMesh;
@@ -255,6 +256,7 @@ public class amazingHexabuttons : MonoBehaviour
 		voiceMessage = new string[2];
 		yellowRC = new int[2];
 		voiceMessage[0] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"[UnityEngine.Random.Range(0, 36)] + "";
+		//voiceMessage[0] = "J";
 		var num = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".IndexOf(voiceMessage[0]);
 		yellowRC[0] = ((num / 6) * 2) + 1;
 		yellowRC[1] = ((num % 6) * 2) + 1;

@@ -401,7 +401,7 @@ public class symbolicHexabuttons : MonoBehaviour
 		for (int bb = 0; bb < 7; bb++)
 			buttonText[bb].text = "";
 		yield return new WaitForSeconds(1.0f);
-		TPOrder = "012345";
+		TPOrder = "0123456";
 		for (int i = 0; i < blueSwaps.Length; i++)
 		{
 			float[][] diff = new float[blueSwaps[i].Length / 2][];
@@ -448,7 +448,6 @@ public class symbolicHexabuttons : MonoBehaviour
 		}
 		hexButtons[6].OnInteract = delegate { pressedBlueCenter(); return false; };
 		hexButtons[6].OnInteractEnded = delegate { pressedBlueCenterRelease(); };
-		TPOrder = TPOrder + "6";
 	}
 	void resetInput()
 	{
@@ -511,6 +510,11 @@ public class symbolicHexabuttons : MonoBehaviour
 					{
 						hexButtons[TPOrder[cursor] - '0'].OnInteract();
 						yield return new WaitForSeconds(0.2f);
+						if (hexButtons[TPOrder[cursor] - '0'].OnInteractEnded != null)
+						{
+							hexButtons[TPOrder[cursor] - '0'].OnInteractEnded();
+							yield return new WaitForSeconds(0.2f);
+						}
 					}
 				}
 			}
