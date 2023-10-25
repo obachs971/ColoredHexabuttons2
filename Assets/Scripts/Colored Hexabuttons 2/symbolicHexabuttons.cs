@@ -34,7 +34,7 @@ public class symbolicHexabuttons : MonoBehaviour
 		numButtonPresses = 0;
 		flag = true;
 		moduleSolved = false;
-		TPOrder = "0123456";
+		TPOrder = "012345";
 		submission = new int[6];
 		generatePuzzle();
 	}
@@ -337,7 +337,7 @@ public class symbolicHexabuttons : MonoBehaviour
 				}
 				buttonText[6].text = blueCenterText;
 				numButtonPresses = 0;
-				TPOrder = "0123456";
+				TPOrder = "012345";
 			}
 		}
 	}
@@ -401,7 +401,7 @@ public class symbolicHexabuttons : MonoBehaviour
 		for (int bb = 0; bb < 7; bb++)
 			buttonText[bb].text = "";
 		yield return new WaitForSeconds(1.0f);
-		TPOrder = "0123456";
+		TPOrder = "012345";
 		for (int i = 0; i < blueSwaps.Length; i++)
 		{
 			float[][] diff = new float[blueSwaps[i].Length / 2][];
@@ -479,40 +479,40 @@ public class symbolicHexabuttons : MonoBehaviour
 					{
 						case "TL":
 						case "1":
-							cursor = 0;
+							cursor = TPOrder[0] - '0';
 							break;
 						case "TR":
 						case "2":
-							cursor = 1;
+							cursor = TPOrder[1] - '0';
 							break;
 						case "ML":
 						case "3":
-							cursor = 2;
+							cursor = TPOrder[2] - '0';
 							break;
 						case "MR":
 						case "4":
-							cursor = 3;
+							cursor = TPOrder[3] - '0';
 							break;
 						case "BL":
 						case "5":
-							cursor = 4;
+							cursor = TPOrder[4] - '0';
 							break;
 						case "BR":
 						case "6":
-							cursor = 5;
+							cursor = TPOrder[5] - '0';
 							break;
 						case "C":
 						case "7":
 							cursor = 6;
 							break;
 					}
-					if (hexButtons[TPOrder[cursor] - '0'].OnInteract != null)
+					if (hexButtons[cursor].OnInteract != null)
 					{
-						hexButtons[TPOrder[cursor] - '0'].OnInteract();
+						hexButtons[cursor].OnInteract();
 						yield return new WaitForSeconds(0.2f);
-						if (hexButtons[TPOrder[cursor] - '0'].OnInteractEnded != null)
+						if (hexButtons[cursor].OnInteractEnded != null)
 						{
-							hexButtons[TPOrder[cursor] - '0'].OnInteractEnded();
+							hexButtons[cursor].OnInteractEnded();
 							yield return new WaitForSeconds(0.2f);
 						}
 					}
