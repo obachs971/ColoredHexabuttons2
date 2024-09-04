@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -22,9 +19,9 @@ public class letteredHexabuttons : MonoBehaviour
 	private int[] buttonCur;
 	private int[] distances;
 	private int prevCur = 0;
-	private string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
-	private int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
-	private int[][] maxChoice =
+	private readonly string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
+	private readonly int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
+	private readonly int[][] maxChoice =
 	{
 		new int[]{ 12, 21, 23, 32 },
 		new int[]{ 2, 11, 13, 20, 24, 31, 33, 42 },
@@ -86,7 +83,7 @@ public class letteredHexabuttons : MonoBehaviour
 		cursors[1] = (int)choices[UnityEngine.Random.Range(0, choices.Count)];
 		for (int aa = 2; aa < 6; aa++)
 		{
-			max = max - (diff[aa - 2] - '0');
+			max -= (diff[aa - 2] - '0');
 			choices = findPossSpaces(cursors[aa - 1], max);
 			cursors[aa] = (int)choices[UnityEngine.Random.Range(0, choices.Count)];
 		}
@@ -233,8 +230,8 @@ public class letteredHexabuttons : MonoBehaviour
 				yield return null;
 				for (int i = 1; i < param.Length; i++)
 				{
-					int cursor = -1;
-					switch (param[i])
+                    int cursor;
+                    switch (param[i])
 					{
 						case "TL":
 						case "1":
@@ -275,11 +272,7 @@ public class letteredHexabuttons : MonoBehaviour
 					}
 				}
 			}
-			else
-				yield return "sendtochat An error occured because the user inputted something wrong.";
 		}
-		else
-			yield return "sendtochat An error occured because the user inputted something wrong.";
 	}
 	private bool isPos(string[] param)
 	{

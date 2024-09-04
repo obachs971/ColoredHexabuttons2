@@ -1,7 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -26,8 +24,8 @@ public class symbolicHexabuttons : MonoBehaviour
 	private string TPOrder;
 	private int numButtonPresses;
 	private bool moduleSolved;
-	private string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
-	private int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
+	private readonly string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
+	private readonly int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
 	void Awake()
 	{
 		moduleId = moduleIdCounter++;
@@ -518,11 +516,7 @@ public class symbolicHexabuttons : MonoBehaviour
 					}
 				}
 			}
-			else
-				yield return "sendtochat An error occured because the user inputted something wrong.";
 		}
-		else
-			yield return "sendtochat An error occured because the user inputted something wrong.";
 	}
 	private bool isPos(string[] param)
 	{

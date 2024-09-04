@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -23,8 +20,8 @@ public class logicalHexabuttons : MonoBehaviour
 	private ArrayList clues = new ArrayList();
 	private int cursor;
 	private bool play;
-	private string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
-	private int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
+	private readonly string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
+	private readonly int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
 	private bool deafMode = false;
 	void Awake()
 	{
@@ -555,8 +552,8 @@ public class logicalHexabuttons : MonoBehaviour
 				yield return null;
 				for (int i = 1; i < param.Length; i++)
 				{
-					int cursor = -1;
-					switch (param[i])
+                    int cursor;
+                    switch (param[i])
 					{
 						case "TL":
 						case "1":
@@ -602,11 +599,7 @@ public class logicalHexabuttons : MonoBehaviour
 					}
 				}
 			}
-			else
-				yield return "sendtochat An error occured because the user inputted something wrong.";
 		}
-		else
-			yield return "sendtochat An error occured because the user inputted something wrong.";
 	}
 	private bool isPos(string[] param)
 	{
