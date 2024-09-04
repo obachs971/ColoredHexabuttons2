@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -21,23 +18,23 @@ public class simpleHexabuttons : MonoBehaviour
 	private int[] solution;
 	private int[] submission;
 	private int numButtonPresses;
-	private string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
-	private int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
-	private Vector3[] ledPos =
+	private readonly string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
+	private readonly int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
+	private readonly Vector3[] ledPos =
 	{
 		new Vector3(-1.131f, 0.43f, 0f),
 		new Vector3(0f, 0.43f, 1.131f),
 		new Vector3(1.131f, 0.43f, 0f),
 		new Vector3(0f, 0.43f, -1.131f)
 	};
-	private string[] table1 =
+	private readonly string[] table1 =
 	{
 		"LUDRUR",
 		"ULRDDL",
 		"DRLURU",
 		"RDULLD"
 	};
-	private int[][] table2 =
+	private readonly int[][] table2 =
 	{
 		new int[]{ 2, 4, 1, 0, 3, 5 },
 		new int[]{ 0, 2, 5, 3, 1, 4 },
@@ -202,8 +199,8 @@ public class simpleHexabuttons : MonoBehaviour
 				yield return null;
 				for (int i = 1; i < param.Length; i++)
 				{
-					int cursor = -1;
-					switch (param[i])
+                    int cursor;
+                    switch (param[i])
 					{
 						case "TL":
 						case "1":

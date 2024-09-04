@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -20,8 +17,8 @@ public class puzzlingHexabuttons : MonoBehaviour
 	private char[] solution;
 	private int numButtonPresses;
 	private bool flag;
-	private int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
-	private string[] table = new string[6];
+	private readonly int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
+	private readonly string[] table = new string[6];
 	private char current;
 	void Awake()
 	{
@@ -229,16 +226,11 @@ public class puzzlingHexabuttons : MonoBehaviour
 						{
 							hexButtons[cursor].OnInteractEnded();
 							yield return new WaitForSeconds(0.2f);
-
 						}
 					}
 				}
 			}
-			else
-				yield return "sendtochat An error occured because the user inputted something wrong.";
 		}
-		else
-			yield return "sendtochat An error occured because the user inputted something wrong.";
 	}
 	private bool isPos(string[] param)
 	{

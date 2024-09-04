@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -24,11 +22,11 @@ public class musicalHexabuttons : MonoBehaviour
 	private int[] greenChoiceNotes;
 	private bool moduleSolved;
 	private bool flag;
-	private string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
-	private int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
-	private string[] noteNames = { "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭", "A", "A♯/B♭", "B" };
+	private readonly string[] positions = { "TL", "TR", "ML", "MR", "BL", "BR" };
+	private readonly int[] buttonIndex = { 0, 1, 2, 3, 4, 5 };
+	private readonly string[] noteNames = { "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭", "A", "A♯/B♭", "B" };
 	
-	private string[] table1 =
+	private readonly string[] table1 =
 	{
 		"13","03","12","45","01","31",
 		"23","32","30","41","54","50",
@@ -36,7 +34,7 @@ public class musicalHexabuttons : MonoBehaviour
 		"24","02","21","25","52","05",
 		"15","51","43","10","35","20"
 	};
-	private int[][] table2 =
+	private readonly int[][] table2 =
 	{
 		new int[]{ 3, 5, 1, 2, 4, 0, 2, 5, 1, 0, 3, 4 },
 		new int[]{ 4, 0, 3, 1, 2, 5, 0, 3, 5, 1, 4, 2 },
@@ -309,11 +307,7 @@ public class musicalHexabuttons : MonoBehaviour
 					}
 				}
 			}
-			else
-				yield return "sendtochat An error occured because the user inputted something wrong.";
 		}
-		else
-			yield return "sendtochat An error occured because the user inputted something wrong.";
 	}
 	private bool isPos(string[] param)
 	{
