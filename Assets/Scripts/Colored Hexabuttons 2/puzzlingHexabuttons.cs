@@ -28,7 +28,7 @@ public class puzzlingHexabuttons : MonoBehaviour
 			table[i] = new string("ABCDEF".ToCharArray().Shuffle());
 			while (check(i, table[i]))
 				table[i] = new string("ABCDEF".ToCharArray().Shuffle());
-			Debug.LogFormat("[Gray Hexabuttons 2 #{0}] {1}", moduleId, table[i]);
+			Debug.LogFormat("[Puzzling Hexabuttons #{0}] {1}", moduleId, table[i]);
 		}
 		for(int i = 0; i < 6; i++)
 		{
@@ -37,7 +37,7 @@ public class puzzlingHexabuttons : MonoBehaviour
 				temp = temp.Replace(table[j][i] + "", "");
 			table[5] += temp;
 		}
-		Debug.LogFormat("[Gray Hexabuttons 2 #{0}] {1}", moduleId, table[5]);
+		Debug.LogFormat("[Puzzling Hexabuttons #{0}] {1}", moduleId, table[5]);
 
 		foreach (int i in buttonIndex)
 		{
@@ -88,7 +88,7 @@ public class puzzlingHexabuttons : MonoBehaviour
 		numButtonPresses++;
 		if (numButtonPresses == 6)
 		{
-			Debug.LogFormat("[Gray Hexabuttons 2 #{0}] User Submission: {1}", moduleId, new string(submission));
+			Debug.LogFormat("[Puzzling Hexabuttons #{0}] User Submission: {1}", moduleId, new string(submission));
 			bool correct = true;
 			for (int aa = 0; aa < 6; aa++)
 			{
@@ -156,7 +156,7 @@ public class puzzlingHexabuttons : MonoBehaviour
 			temp = solution[n - '0'] = table[n - '0'][temp - 'A'];
 			buttonText[n - '0'].text = temp + "";
 		}
-		Debug.LogFormat("[Gray Hexabuttons 2 #{0}] Button Texts: {1}", moduleId, new string(solution));
+		Debug.LogFormat("[Puzzling Hexabuttons #{0}] Button Texts: {1}", moduleId, new string(solution));
 	}
 	void resetInput()
 	{
